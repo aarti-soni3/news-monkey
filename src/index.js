@@ -8,8 +8,8 @@ import News from './components/News';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <NavBar/>
-    <News/>
+    <NavBar />
+    <News pageSize={5} />
   </React.StrictMode>
 );
 
