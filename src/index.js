@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <NavBar />
-    <News pageSize={5} />
+    <News pageSize={5} country={'in'} category={'science'}/>
   </React.StrictMode>
 );
 
