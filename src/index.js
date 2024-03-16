@@ -3,16 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-// import NavBar from './components/NavBar';
-// import News from './components/News';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App/>
-    {/* <NavBar />
-    <News pageSize={5} country="in" category="science"/> */}
   </React.StrictMode>
 );
 
