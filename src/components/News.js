@@ -23,7 +23,6 @@ export default class News extends Component {
 
   constructor(props) {
     super(props);
-    console.log("i am constructor");
     this.state = {
       articles: [],
       loading: true,
@@ -34,15 +33,19 @@ export default class News extends Component {
   }
 
   async updateNews() {
+    this.props.setProgress(10);
     let url = `https://newsapi.org/v2/top-headlines?&country=${this.props.country}&category=${this.props.category}&apiKey=4bbd78db70c84e35907ee04d9231c05e&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
+    this.props.setProgress(30);
     let parsedData = await data.json();
+    this.props.setProgress(70);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false
     });
+    this.props.setProgress(100);
   }
 
   async componentDidMount() {
@@ -87,8 +90,8 @@ export default class News extends Component {
 
           <div className='container my-3'>
             <div className='row'>
-              {this.state.articles.map((element) => {
-                return <div className='col-md-4' key={element.url}>
+              {this.state.articles.map((element,index) => {
+                return <div className='col-md-4' key={index} /* key={element.url} */> {/* changed due to same key issue*/ }
                   <NewsItem title={element.title /* && (element.title.length >= 40 ? element.title.slice(0, 40) : element.title) */}
                     description={element.description && (element.description.length >= 60 ? element.description.slice(0, 60) : element.description)}
                     imageUrl={element.urlToImage}
